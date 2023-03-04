@@ -43,9 +43,7 @@ const NoteList = ({
   const handleClose = () => setShowModal(false);
 
   const filteredNotes = useMemo(() => {
-    return notes.filter((note) => {
-      console.log("sT", selectedTags);
-
+    return (notes || []).filter((note) => {
       return (
         (title === "" ||
           note.title.toLowerCase().includes(title.toLowerCase())) &&
@@ -96,7 +94,7 @@ const NoteList = ({
                 <Form.Label>Tags</Form.Label>
                 <ReactSelect
                   isMulti
-                  options={availableTags.map(({ label, id }) => {
+                  options={(availableTags || []).map(({ label, id }) => {
                     return { label: label, value: id };
                   })}
                   value={selectedTags.map((selectedTag) => {
@@ -146,7 +144,7 @@ function EditTagsModal({
       <ModalBody>
         <Form>
           <Stack gap={1}>
-            {tags.map((tag) => (
+            {(tags || []).map((tag) => (
               <Row key={tag.id}>
                 <Col>
                   <Form.Control

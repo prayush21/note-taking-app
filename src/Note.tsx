@@ -10,12 +10,7 @@ import {
   Stack,
 } from "react-bootstrap";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import {
-  Link,
-  Navigate,
-  useNavigate,
-  useOutletContext,
-} from "react-router-dom";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import { Note } from "./App";
 
 type NoteComponentProps = {

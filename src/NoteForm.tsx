@@ -63,13 +63,15 @@ export function NoteForm({
             <Form.Group controlId="tags">
               <Form.Label>Tags</Form.Label>
               <CreatableReactSelect
+                placeholder="Select or Create your own tags"
+                aria-label="tags"
                 isMulti
                 onCreateOption={(label) => {
                   const newTag = { label, id: uuidV4() };
                   onAddTag(newTag);
                   setSelectedTags((prevTags) => [...prevTags, newTag]);
                 }}
-                options={availableTags.map(({ label, id }) => {
+                options={(availableTags || []).map(({ label, id }) => {
                   return { label: label, value: id };
                 })}
                 value={selectedTags.map((selectedTag) => {
